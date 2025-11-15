@@ -8,23 +8,6 @@ const config: Config = {
   ],
   darkMode: "class",
   theme: {
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: "1rem",
-        sm: "2rem",
-        lg: "4rem",
-        xl: "5rem",
-        "2xl": "6rem",
-      },
-      screens: {
-        sm: "640px", // Mobile
-        md: "768px", // Tablet
-        lg: "1024px", // Laptop
-        xl: "1280px", // Desktop
-        "2xl": "1536px", // Large Desktop
-      },
-    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -68,6 +51,10 @@ const config: Config = {
       },
       animation: {
         blob: "blob 7s infinite",
+        "fade-in": "fadeIn 0.5s ease-in-out",
+        "slide-up": "slideUp 0.3s ease-out",
+        blink: "blink 1s infinite",
+        typewriter: "typewriter 2s steps(40) 1s both",
       },
       keyframes: {
         blob: {
@@ -84,6 +71,42 @@ const config: Config = {
             transform: "translate(0px, 0px) scale(1)",
           },
         },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        slideUp: {
+          "0%": { transform: "translateY(10px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        blink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
+        typewriter: {
+          from: { width: "0" },
+          to: { width: "100%" },
+        },
+      },
+      fontFamily: {
+        sans: [
+          "Fira Code",
+          "Cascadia Code",
+          "SF Mono",
+          "Monaco",
+          "Consolas",
+          "Ubuntu Mono",
+          "monospace",
+        ],
+        mono: [
+          "Fira Code",
+          "Cascadia Code",
+          "SF Mono",
+          "Monaco",
+          "Consolas",
+          "Ubuntu Mono",
+          "monospace",
+        ],
       },
     },
   },
