@@ -1,7 +1,8 @@
 "use client";
 
+import { siteConfig } from "@/data/site-data";
 import { cn } from "@/lib/utils";
-import { Code, CodeXml, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 import Link from "next/link";
 
 interface SocialIconsProps {
@@ -13,39 +14,27 @@ interface SocialIconsProps {
 const socialLinks = [
   {
     name: "GitHub",
-    href: "https://github.com/maker-shihab",
+    href: siteConfig.links.github,
     icon: Github,
     color: "hover:text-gray-700 dark:hover:text-gray-300",
   },
   {
     name: "Twitter",
-    href: "https://twitter.com/makershihab",
+    href: siteConfig.links.twitter,
     icon: Twitter,
     color: "hover:text-blue-400",
   },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/in/maker-shihab",
+    href: siteConfig.links.linkedin,
     icon: Linkedin,
     color: "hover:text-blue-600",
   },
   {
     name: "Email",
-    href: "mailto:frontendmaker99@gmail.com",
+    href: siteConfig.links.email,
     icon: Mail,
     color: "hover:text-red-500",
-  },
-  {
-    name: "Figma",
-    href: "#",
-    icon: CodeXml,
-    color: "hover:text-purple-500",
-  },
-  {
-    name: "CodePen",
-    href: "#",
-    icon: Code,
-    color: "hover:text-gray-900 dark:hover:text-white",
   },
 ];
 
