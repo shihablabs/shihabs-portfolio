@@ -380,14 +380,14 @@ export function Hero() {
                         ease: "easeInOut",
                         delay: tech.delay,
                       }}
-                      className="relative w-14 h-14 lg:w-16 lg:h-16 rounded-xl backdrop-blur-md bg-white/20 dark:bg-gray-900/20 border border-white/30 dark:border-gray-700/30 shadow-lg flex items-center justify-center p-2 group"
+                      className="relative w-14 h-14 lg:w-18 lg:h-18 rounded-xl backdrop-blur-md bg-white/25 dark:bg-gray-900/30 border border-white/70 dark:border-gray-600/70 shadow-lg flex items-center justify-center p-2 lg:p-2.5 group"
                     >
                       <Image
                         src={tech.src}
                         alt={tech.name}
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 lg:w-10 lg:h-10 object-contain filter group-hover:brightness-110 transition-all duration-300"
+                        width={40}
+                        height={40}
+                        className="w-8 h-8 lg:w-12 lg:h-12 object-contain filter group-hover:brightness-110 transition-all duration-300"
                       />
                       {/* Glow effect on hover */}
                       <motion.div

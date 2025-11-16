@@ -7,14 +7,12 @@ export function HashScrollHandler() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Only handle hash navigation on home page
-    if (pathname === "/" && window.location.hash) {
-      const hash = window.location.hash.substring(1); // Remove "#"
-      const element = document.getElementById(hash);
+    const scrollToHash = () => {
+      if (pathname === "/" && window.location.hash) {
+        const hash = window.location.hash.substring(1); // Remove "#"
+        const element = document.getElementById(hash);
 
-      if (element) {
-        // Small delay to ensure page is fully rendered
-        setTimeout(() => {
+        if (element) {
           const headerOffset = 80;
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition =
@@ -24,9 +22,19 @@ export function HashScrollHandler() {
             top: offsetPosition,
             behavior: "smooth",
           });
-        }, 100);
+        }
       }
-    }
+    };
+
+    // On initial load
+    setTimeout(scrollToHash, 100);
+
+    // On hash change while staying on the home page
+    window.addEventListener("hashchange", scrollToHash);
+
+    return () => {
+      window.removeEventListener("hashchange", scrollToHash);
+    };
   }, [pathname]);
 
   return null;

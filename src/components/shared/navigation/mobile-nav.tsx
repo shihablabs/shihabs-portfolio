@@ -42,28 +42,28 @@ export function MobileNav({ onNavigate }: MobileNavProps) {
   useEffect(() => {
     const updateActiveHash = () => {
       if (pathname === "/") {
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-          setActiveHash(hash);
-        } else {
-          // Check scroll position to determine active section
-          const sections = ["skills", "experience", "contact"];
-          const scrollPosition = window.scrollY + 100; // Offset for header
+        // Check scroll position to determine active section
+        const sections = ["skills", "experience", "contact"];
+        const scrollPosition = window.scrollY + 100; // Offset for header
+        let foundSection = "";
 
-          for (const section of sections) {
-            const element = document.getElementById(section);
-            if (element) {
-              const { offsetTop, offsetHeight } = element;
-              if (
-                scrollPosition >= offsetTop &&
-                scrollPosition < offsetTop + offsetHeight
-              ) {
-                setActiveHash(section);
-                break;
-              }
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const { offsetTop, offsetHeight } = element;
+            if (
+              scrollPosition >= offsetTop &&
+              scrollPosition < offsetTop + offsetHeight
+            ) {
+              foundSection = section;
+              break;
             }
           }
         }
+
+        // If we're not inside any of the tracked sections,
+        // clear the hash so "Home" stays active.
+        setActiveHash(foundSection);
       } else {
         setActiveHash("");
       }
@@ -145,7 +145,10 @@ export function MobileNav({ onNavigate }: MobileNavProps) {
           {siteConfig.mainNav.map((item, index) => {
             // Check if item is active
             let isActive = false;
-            if (item.href.startsWith("/#")) {
+            if (item.href === "/") {
+              // Home is active only on root when no section is active
+              isActive = pathname === "/" && activeHash === "";
+            } else if (item.href.startsWith("/#")) {
               // For hash links, check if the hash matches
               isActive =
                 pathname === "/" && activeHash === item.href.substring(2);

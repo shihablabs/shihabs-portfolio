@@ -209,7 +209,7 @@ export function ProjectCard({
             {/* Scrollable Content */}
             <div className="flex-1 overflow-y-auto pr-1 mb-4">
               {/* Terminal Header */}
-              <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border/50 sticky top-0 -mt-1 pt-1 z-10">
+              <div className="flex items-center gap-2 mb-4 pb-3 border-b bg-background dark:bg-gray-950/95 border-border/50 sticky top-0 -mt-1 pt-1 z-10 backdrop-blur-xl">
                 <div className="flex gap-1.5">
                   <div className="w-2.5 h-2.5 bg-red-500 rounded-full"></div>
                   <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full"></div>
