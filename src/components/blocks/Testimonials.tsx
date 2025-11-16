@@ -10,7 +10,7 @@ import Image from "next/image";
 const testimonials = [
   {
     name: "Réza Ganjavi",
-    feedback: "Maker Shihab is a very competent...",
+    feedback: "ShihabLabs is a very competent...",
     img: "/img/clients/reza-ganjavi.png",
   },
   {

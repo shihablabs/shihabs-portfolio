@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Maker Shihab",
+  name: "ShihabLabs",
   description:
     "Creative Frontend Architect - Building exceptional digital experiences with modern technologies",
   url: "https://maker-shihab.vercel.app",

@@ -31,7 +31,7 @@ export interface NavigationItem {
 }
 
 export const siteConfig: SiteConfig = {
-  name: "Maker Shihab",
+  name: "ShihabLabs",
   description:
     "Creative Frontend Architect - Building exceptional digital experiences with modern technologies and clean code principles.",
   url: "https://maker-shihab.vercel.app",
@@ -43,7 +43,7 @@ export const siteConfig: SiteConfig = {
     email: "mailto:frontendmaker99@gmail.com",
   },
   author: {
-    name: "Maker Shihab",
+    name: "ShihabLabs",
     email: "frontendmaker99@gmail.com",
     twitter: "@makershihab",
     github: "maker-shihab",

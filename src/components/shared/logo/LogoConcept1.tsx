@@ -38,7 +38,7 @@ export const LogoConcept1 = ({
         className="font-bold text-lg bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-purple-500 to-blue-500"
         whileHover={{ scale: 1.02 }}
       >
-        Maker Shihab
+        ShihabLabs
       </motion.span>
       <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-mono">
         Creative Frontend Architect

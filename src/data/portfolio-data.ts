@@ -22,13 +22,8 @@ export interface Project {
 export interface Skill {
   id: string;
   name: string;
-  category: "frontend" | "backend" | "tooling" | "design" | "soft";
-  level: number; // 1-100
-  yearsOfExperience: number;
-  featured: boolean;
-  description: string;
   icon: string;
-  projects: number;
+  category: "frontend" | "backend" | "tooling" | "design" | "soft";
 }
 
 export interface Experience {
@@ -539,113 +534,134 @@ export const skills: Skill[] = [
   {
     id: "react",
     name: "React.js",
+    icon: "/assets/images/icons/react.png",
     category: "frontend",
-    level: 95,
-    yearsOfExperience: 4,
-    featured: true,
-    description:
-      "Building dynamic, component-based user interfaces with modern React patterns",
-    icon: "⚛️",
-    projects: 45,
   },
   {
     id: "nextjs",
     name: "Next.js",
+    icon: "/assets/images/icons/nextjs-icon.svg",
     category: "frontend",
-    level: 90,
-    yearsOfExperience: 3,
-    featured: true,
-    description: "Full-stack React framework for production-grade applications",
-    icon: "▲",
-    projects: 25,
   },
   {
     id: "typescript",
     name: "TypeScript",
+    icon: "/assets/images/icons/typescript.svg",
     category: "frontend",
-    level: 88,
-    yearsOfExperience: 3,
-    featured: true,
-    description: "Type-safe JavaScript development for scalable applications",
-    icon: "📘",
-    projects: 35,
   },
   {
     id: "tailwind",
     name: "Tailwind CSS",
+    icon: "/assets/images/icons/tailwind-css.svg",
     category: "frontend",
-    level: 92,
-    yearsOfExperience: 3,
-    featured: true,
-    description: "Utility-first CSS framework for rapid UI development",
-    icon: "🎨",
-    projects: 50,
   },
   {
     id: "javascript",
     name: "JavaScript",
+    icon: "/assets/images/icons/javascript.svg",
     category: "frontend",
-    level: 94,
-    yearsOfExperience: 5,
-    featured: true,
-    description: "Modern ES6+ JavaScript with functional programming patterns",
-    icon: "🟨",
-    projects: 60,
   },
   {
     id: "html5",
     name: "HTML5",
+    icon: "/assets/images/icons/html.png",
     category: "frontend",
-    level: 98,
-    yearsOfExperience: 5,
-    featured: false,
-    description: "Semantic HTML with accessibility best practices",
-    icon: "🌐",
-    projects: 80,
   },
   {
     id: "css3",
     name: "CSS3",
+    icon: "/assets/images/icons/css.png",
     category: "frontend",
-    level: 96,
-    yearsOfExperience: 5,
-    featured: false,
-    description: "Modern CSS with Grid, Flexbox, and animations",
-    icon: "🎭",
-    projects: 75,
   },
   {
     id: "framer-motion",
     name: "Framer Motion",
+    icon: "/assets/images/icons/framer-motion.svg",
     category: "frontend",
-    level: 85,
-    yearsOfExperience: 2,
-    featured: true,
-    description: "Production-ready motion library for React",
-    icon: "✨",
-    projects: 20,
+  },
+  {
+    id: "bootstrap",
+    name: "Bootstrap",
+    icon: "/assets/images/icons/Bootstrap_logo.svg",
+    category: "frontend",
   },
   {
     id: "git",
     name: "Git & GitHub",
+    icon: "/assets/images/icons/github.svg",
     category: "tooling",
-    level: 90,
-    yearsOfExperience: 4,
-    featured: false,
-    description: "Version control and collaborative development workflows",
-    icon: "📚",
-    projects: 70,
   },
   {
     id: "figma",
     name: "Figma",
+    icon: "/assets/images/icons/figma.png",
     category: "design",
-    level: 80,
-    yearsOfExperience: 3,
-    featured: false,
-    description: "UI/UX design and prototyping tool",
-    icon: "🎯",
-    projects: 30,
+  },
+  {
+    id: "xd",
+    name: "Adobe XD",
+    icon: "/assets/images/icons/xd.png",
+    category: "design",
+  },
+  {
+    id: "nodejs",
+    name: "Node.js",
+    icon: "/assets/images/icons/nodejs.svg",
+    category: "backend",
+  },
+  {
+    id: "express",
+    name: "Express.js",
+    icon: "/assets/images/icons/express-js.svg",
+    category: "backend",
+  },
+  {
+    id: "python",
+    name: "Python",
+    icon: "/assets/images/icons/python.svg",
+    category: "backend",
+  },
+  {
+    id: "django",
+    name: "Django",
+    icon: "/assets/images/icons/django.png",
+    category: "backend",
+  },
+  {
+    id: "svelte",
+    name: "Svelte",
+    icon: "/assets/images/icons/svelte.svg",
+    category: "frontend",
+  },
+  {
+    id: "shopify",
+    name: "Shopify",
+    icon: "/assets/images/icons/shopify.svg",
+    category: "frontend",
+  },
+  {
+    id: "wordpress",
+    name: "WordPress",
+    icon: "/assets/images/icons/wordpress.svg",
+    category: "frontend",
+  },
+  {
+    id: "communication",
+    name: "Communication",
+    icon: "/assets/images/icons/exchange.png",
+    category: "soft",
+  },
+  {
+    id: "presentation",
+    name: "Presentations",
+    icon: "/assets/images/icons/training.png",
+    category: "soft",
+  },
+  {
+    id: "documentation",
+    name: "Documentation",
+    icon: "/assets/images/icons/documentation.svg",
+    category: "soft",
   },
 ];
 
@@ -722,7 +738,7 @@ export const testimonials: Testimonial[] = [
     avatar: "/assets/images/clients/reza-ganjavi.png",
     rating: 5,
     content:
-      "Maker Shihab is a very competent professional who delivers top quality work. He's careful, efficient, focuses on quality but still works fast. He also has high ethics and I can trust him with my data. I highly recommend him.",
+      "ShihabLabs is a very competent professional who delivers top quality work. He's careful, efficient, focuses on quality but still works fast. He also has high ethics and I can trust him with my data. I highly recommend him.",
     project: "Personal Website",
     date: "2024-06-15",
     verified: true,
@@ -739,7 +755,7 @@ export const testimonials: Testimonial[] = [
     avatar: "/assets/images/clients/faizan-yasin.jpeg",
     rating: 5,
     content:
-      "Maker Shihab had done wonderful job delivered on time and is very easy to communicate with him. Recommended for complex frontend projects.",
+      "ShihabLabs had done wonderful job delivered on time and is very easy to communicate with him. Recommended for complex frontend projects.",
     project: "E-commerce Development",
     date: "2024-05-20",
     verified: true,

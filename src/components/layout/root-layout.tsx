@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
+import { BackToTop } from "../shared/back-to-top";
 import { Footer } from "../shared/footer";
 import { Header } from "../shared/header";
 import { Analytics } from "./analytics";
@@ -24,6 +25,7 @@ export function RootLayout({ children }: RootLayoutProps) {
         <main className="flex-1">{children}</main>
         <Footer />
       </div>
+      <BackToTop />
       <Toaster
         position="top-right"
         toastOptions={{

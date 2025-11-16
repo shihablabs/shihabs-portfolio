@@ -1,6 +1,5 @@
 "use client";
 
-import { SkillBadge } from "@/components/blocks/skill-badge";
 import { Button } from "@/components/ui/button";
 import { skillCategories, skills } from "@/data";
 import { fadeIn } from "@/lib/animations";
@@ -10,12 +9,13 @@ import {
   Palette,
   Rocket,
   Server,
-  Sparkles,
   Terminal,
   Users,
   Wrench,
   Zap,
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const categoryIcons = {
@@ -34,10 +34,7 @@ export function Skills() {
     return skill.category === selectedCategory;
   });
 
-  // Calculate stats
-  const expertSkills = skills.filter((s) => s.level >= 90).length;
-  const totalProjects = skills.reduce((acc, skill) => acc + skill.projects, 0);
-  const maxExperience = Math.max(...skills.map((s) => s.yearsOfExperience));
+  // Stats removed in compact spec
 
   return (
     <section
@@ -131,88 +128,7 @@ export function Skills() {
           </motion.p>
         </motion.div>
 
-        {/* Stats Bar - Developer Style */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-16 p-6 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="text-center p-4 rounded-lg bg-muted/30 border border-border/30"
-            >
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Sparkles className="w-5 h-5 text-primary" />
-                <span className="text-3xl font-bold bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-                  {expertSkills}+
-                </span>
-              </div>
-              <div className="text-xs font-mono text-muted-foreground">
-                Expert Level Skills
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="text-center p-4 rounded-lg bg-muted/30 border border-border/30"
-            >
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Code className="w-5 h-5 text-primary" />
-                <span className="text-3xl font-bold bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-                  {skills.length}+
-                </span>
-              </div>
-              <div className="text-xs font-mono text-muted-foreground">
-                Technologies
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
-              className="text-center p-4 rounded-lg bg-muted/30 border border-border/30"
-            >
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Rocket className="w-5 h-5 text-primary" />
-                <span className="text-3xl font-bold bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-                  {totalProjects}+
-                </span>
-              </div>
-              <div className="text-xs font-mono text-muted-foreground">
-                Projects Completed
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.7 }}
-              className="text-center p-4 rounded-lg bg-muted/30 border border-border/30"
-            >
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Zap className="w-5 h-5 text-primary" />
-                <span className="text-3xl font-bold bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-                  {maxExperience}+
-                </span>
-              </div>
-              <div className="text-xs font-mono text-muted-foreground">
-                Years Experience
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
+        {/* Stats removed per new compact spec */}
 
         {/* Category Filters - Developer Style */}
         <motion.div
@@ -265,21 +181,34 @@ export function Skills() {
             })}
         </motion.div>
 
-        {/* Skills Grid */}
+        {/* Skills list - centered rows using flex wrap */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="flex flex-wrap justify-center gap-3 sm:gap-4"
         >
-          {filteredSkills.map((skill, index) => (
-            <SkillBadge
+          {filteredSkills.map((skill) => (
+            <motion.div
               key={skill.id}
-              skill={skill}
-              index={index}
-              variant="default"
-            />
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-border/50 bg-background/70 backdrop-blur-[2px] hover:bg-gradient-to-r hover:from-red-500/10 hover:via-purple-500/10 hover:to-blue-500/10 hover:border-primary/40 transition-all duration-200"
+            >
+              <span className="relative flex items-center justify-center w-7 h-7 rounded-md border border-border/60 bg-card/80">
+                <Image
+                  src={skill.icon}
+                  alt={skill.name}
+                  width={20}
+                  height={20}
+                  className="w-5 h-5 object-contain"
+                />
+              </span>
+              <span className="text-xs sm:text-sm font-medium leading-none">
+                {skill.name}
+              </span>
+            </motion.div>
           ))}
         </motion.div>
 
@@ -297,10 +226,10 @@ export function Skills() {
               asChild
               className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 text-white hover:from-red-600 hover:via-purple-600 hover:to-blue-600 border-0 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <a href="/contact">
+              <Link href="/contact">
                 <Rocket className="w-5 h-5 mr-2" />
                 Ready to Build Something Amazing?
-              </a>
+              </Link>
             </Button>
           </motion.div>
         </motion.div>

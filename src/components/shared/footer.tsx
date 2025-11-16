@@ -3,7 +3,6 @@
 import { contactInfo, siteConfig } from "@/data/site-data";
 import { motion } from "framer-motion";
 import {
-  Code,
   Coffee,
   Github,
   Heart,
@@ -18,6 +17,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { BackToTop } from "./back-to-top";
+import { LogoConcept1 } from "./logo/LogoConcept1";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -69,27 +70,8 @@ export function Footer() {
           {/* Brand & Code Section */}
           <div className="lg:col-span-2 space-y-6">
             <div className="space-y-4">
-              <Link
-                href="/"
-                className="inline-flex items-center space-x-3 group"
-              >
-                <motion.div
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                  className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-red-500 via-purple-500 to-blue-500 shadow-lg"
-                >
-                  <Code className="h-6 w-6 text-white" />
-                </motion.div>
-                <div>
-                  <h3 className="font-bold text-2xl bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-                    Maker Shihab
-                  </h3>
-                  <p className="text-xs text-muted-foreground font-mono">
-                    &lt;Creative Frontend Architect /&gt;
-                  </p>
-                </div>
-              </Link>
-              <p className="text-muted-foreground max-w-md leading-relaxed">
+              <LogoConcept1 setIsMobileOpen={() => {}} />
+              <p className="text-muted-foreground max-w-md leading-relaxed pt-3">
                 Crafting exceptional digital experiences with modern
                 technologies, clean code, and a passion for innovation.
               </p>
@@ -270,7 +252,7 @@ export function Footer() {
                 </motion.span>
                 <span>and</span>
                 <Coffee className="w-4 h-4 text-amber-600" />
-                <span>by Maker Shihab</span>
+                <span>by ShihabLabs</span>
               </p>
             </div>
 
@@ -312,5 +294,15 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+// Floating Back-To-Top button rendered globally
+export default function FooterWithBackToTop() {
+  return (
+    <>
+      <Footer />
+      <BackToTop />
+    </>
   );
 }

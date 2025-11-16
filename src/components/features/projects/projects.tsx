@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { projects } from "@/data";
 import { fadeIn } from "@/lib/animations";
 import { motion } from "framer-motion";
+import { Rocket } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -101,12 +102,14 @@ export function Projects() {
           className="text-center mt-12"
         >
           <Button
-            asChild
             size="lg"
-            variant="outline"
-            className="bg-gradient-to-r from-red-500/10 via-purple-500/10 to-blue-500/10 border-primary/20 hover:border-primary/50 hover:bg-gradient-to-r hover:from-red-500/20 hover:via-purple-500/20 hover:to-blue-500/20"
+            asChild
+            className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 text-white hover:from-red-600 hover:via-purple-600 hover:to-blue-600 border-0 shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            <Link href="/projects">View All Projects</Link>
+            <Link href="/projects">
+              <Rocket className="w-5 h-5 mr-2" />
+              View All Projects
+            </Link>
           </Button>
         </motion.div>
       </div>

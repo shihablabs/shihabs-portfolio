@@ -107,11 +107,8 @@ export function Hero() {
             {/* Headline */}
             <motion.div variants={heroVariants.text} className="space-y-4">
               <h4 className="text-xl lg:text-2xl text-muted-foreground font-light">
-                Hi, I&apos;m{" "}
-                <span className="font-semibold text-foreground">
-                  Maker Shihab
-                </span>{" "}
-                👋
+                Hi, I&apos;m Muhammad{" "}
+                <span className="font-semibold text-foreground">Shihab</span> 👋
               </h4>
               <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight">
                 Creative{" "}
@@ -284,7 +281,7 @@ export function Hero() {
                 >
                   <Image
                     src="/assets/images/me.jpg"
-                    alt="Maker Shihab - Frontend Developer"
+                    alt="ShihabLabs - Frontend Developer"
                     fill
                     className="object-cover transition-transform duration-700"
                     priority
