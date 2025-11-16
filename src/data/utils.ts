@@ -61,11 +61,13 @@ export const getSkillsByCategory = (
 };
 
 export const getFeaturedSkills = (skills: Skill[]): Skill[] => {
-  return skills.filter((skill) => skill.featured);
+  return skills.slice(0, 8);
 };
 
 export const getTopSkills = (skills: Skill[], limit: number = 8): Skill[] => {
-  return skills.sort((a, b) => b.level - a.level).slice(0, limit);
+  return [...skills]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .slice(0, limit);
 };
 
 // Experience utilities
