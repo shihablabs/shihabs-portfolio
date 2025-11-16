@@ -1,6 +1,6 @@
 import { RootLayout } from "@/components/layout/root-layout";
 import { siteConfig } from "@/data/site-data";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "swiper/css";
@@ -72,11 +72,14 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  category: "technology",
+};
+
+export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#0b0b0c" },
   ],
-  category: "technology",
 };
 
 export default function Layout({

@@ -576,7 +576,7 @@ export const skills: Skill[] = [
   {
     id: "framer-motion",
     name: "Framer Motion",
-    icon: "/assets/images/icons/framer-motion.svg",
+    icon: "/assets/images/icons/figma.png",
     category: "frontend",
   },
   {
