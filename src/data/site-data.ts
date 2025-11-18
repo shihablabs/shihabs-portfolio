@@ -34,24 +34,24 @@ export const siteConfig: SiteConfig = {
   name: "ShihabLabs",
   description:
     "Creative Frontend Architect - Building exceptional digital experiences with modern technologies and clean code principles.",
-  url: "https://maker-shihab.vercel.app",
+  url: "https://shihablabs.vercel.app/",
   ogImage: "/og-image.jpg",
   links: {
     twitter: "https://twitter.com/makershihab",
-    github: "https://github.com/maker-shihab",
-    linkedin: "https://linkedin.com/in/maker-shihab",
+    github: "https://github.com/shihablabs",
+    linkedin: "https://linkedin.com/in/shihablabs",
     email: "mailto:frontendmaker99@gmail.com",
   },
   author: {
     name: "ShihabLabs",
     email: "frontendmaker99@gmail.com",
-    twitter: "@makershihab",
-    github: "maker-shihab",
-    linkedin: "maker-shihab",
+    twitter: "@shihablabs",
+    github: "shihablabs",
+    linkedin: "shihablabs",
   },
   resume: {
-    url: "/resume/maker-shihab-resume.pdf",
-    fileName: "Maker-Shihab-Frontend-Developer-Resume.pdf",
+    url: "/resume/shihablabs-resume.pdf",
+    fileName: "Muhammad-Shihab-Frontend-Developer-Resume.pdf",
   },
 };
 
@@ -113,10 +113,10 @@ export const contactInfo = {
   phone: "+88 01722 563073",
   location: "Nurjahan Road, Mohammodpur, Dhaka, Bangladesh",
   social: {
-    github: "https://github.com/maker-shihab",
-    linkedin: "https://linkedin.com/in/maker-shihab",
+    github: "https://github.com/shihablabs",
+    linkedin: "https://linkedin.com/in/shihablabs",
     twitter: "https://twitter.com/makershihab",
     fiverr: "https://fiverr.com/makershihab",
-    upwork: "https://upwork.com/freelancers/makershihab",
+    upwork: "https://upwork.com/freelancers/shihablabs",
   },
 };

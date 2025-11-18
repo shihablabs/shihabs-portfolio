@@ -398,7 +398,7 @@ export function About() {
               className="border-primary/30 hover:border-primary/50"
             >
               <a
-                href="https://github.com/maker-shihab"
+                href="https://github.com/shihablabs"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -413,7 +413,7 @@ export function About() {
               className="border-primary/30 hover:border-primary/50"
             >
               <a
-                href="https://linkedin.com/in/maker-shihab"
+                href="https://linkedin.com/in/shihablabs"
                 target="_blank"
                 rel="noopener noreferrer"
               >

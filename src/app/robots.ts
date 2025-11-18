@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ["/api/"],
     },
     sitemap: `${
-      process.env.NEXT_PUBLIC_SITE_URL ?? "https://maker-shihab.vercel.app"
+      process.env.NEXT_PUBLIC_SITE_URL ?? "https://shihablabs.vercel.app"
     }/sitemap.xml`,
   };
 }

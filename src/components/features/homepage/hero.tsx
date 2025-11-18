@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { portfolioStats } from "@/data";
 import { siteConfig } from "@/data/site-data";
 import { fadeIn, heroVariants, staggerContainer } from "@/lib/animations";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowDown,
   Download,
@@ -17,9 +17,28 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+// Rotating middle words only
+const rotatingWords = ["Frontend", "Backend", "Shopify"];
+
 export function Hero() {
   const [count, setCount] = useState(0);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const yearsOfExperience = portfolioStats.yearsOfExperience;
+
+  // Fixed first and last words (chosen to match all three middle words)
+  const firstWord = "Professional";
+  const lastWord = "Developer";
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Countdown animation for years of experience
   useEffect(() => {
@@ -40,6 +59,15 @@ export function Hero() {
     return () => clearInterval(timer);
   }, [yearsOfExperience]);
 
+  // Rotate middle word every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prev) => (prev + 1) % rotatingWords.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const handleDownloadCV = () => {
     const link = document.createElement("a");
     link.href = siteConfig.resume.url;
@@ -48,6 +76,8 @@ export function Hero() {
   };
 
   // Technology icons to display around hero image
+  // Left side (4): React, TypeScript, Next.js, JavaScript
+  // Right side (4): Shopify, Tailwind, HTML, CSS
   const techIcons = [
     { name: "React", src: "/assets/images/icons/react.png", delay: 0 },
     {
@@ -61,17 +91,26 @@ export function Hero() {
       delay: 0.2,
     },
     {
+      name: "JavaScript",
+      src: "/assets/images/icons/javascript.svg",
+      delay: 0.8,
+    },
+    {
+      name: "Shopify",
+      src: "/assets/images/icons/shopify.svg",
+      delay: 0.1,
+    },
+    {
       name: "Tailwind",
       src: "/assets/images/icons/tailwind-css.svg",
       delay: 0.6,
     },
-    { name: "JavaScript", src: "/assets/images/icons/js.png", delay: 0.8 },
     { name: "HTML", src: "/assets/images/icons/html.png", delay: 1.0 },
     { name: "CSS", src: "/assets/images/icons/css.png", delay: 1.2 },
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-gradient(to bottom, #f0f0f0, #ffffff) py-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-gradient(to bottom, #f0f0f0, #ffffff) pb-32 pt-20 md:py-20">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Gradient Orbs */}
@@ -110,12 +149,30 @@ export function Hero() {
                 Hi, I&apos;m Muhammad{" "}
                 <span className="font-semibold text-foreground">Shihab</span> 👋
               </h4>
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight">
-                Creative{" "}
-                <span className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-                  Frontend
-                </span>{" "}
-                Architect
+              <h1 className="text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold tracking-tight">
+                {/* First line: First word + Rotating middle word */}
+                <div className="flex flex-wrap justify-center lg:justify-start items-center gap-2">
+                  <span>{firstWord}</span>
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={`middle-${currentWordIndex}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{
+                        duration: 0.5,
+                        ease: "easeInOut",
+                      }}
+                      className="inline-block bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent font-bold"
+                    >
+                      {rotatingWords[currentWordIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
+                {/* Second line: Last word */}
+                <div className="mt-2">
+                  <span>{lastWord}</span>
+                </div>
               </h1>
             </motion.div>
 
@@ -250,7 +307,7 @@ export function Hero() {
           {/* Right Column - Image */}
           <motion.div
             variants={heroVariants.image}
-            className="flex justify-center lg:justify-end relative"
+            className="flex justify-center relative"
           >
             <div className="relative">
               {/* Main Image Container */}
@@ -262,7 +319,7 @@ export function Hero() {
                   ease: [0.4, 0, 0.2, 1],
                 }}
                 whileHover={{ scale: 1.02 }}
-                className="relative w-[400px] h-[500px] lg:w-[400px] lg:h-[500px] xl:w-[500px] xl:h-[600px] rounded-3xl overflow-hidden border-2 border-border/50 shadow-2xl"
+                className="relative w-[360px] h-[400px] lg:w-[400px] lg:h-[450px] xl:w-[500px] xl:h-[600px] rounded-3xl overflow-hidden border-2 border-border/50 shadow-2xl mx-auto"
               >
                 <motion.div
                   animate={{
@@ -327,85 +384,91 @@ export function Hero() {
                 </motion.div>
               </motion.div>
 
-              {/* Animated Technology Icons with Glassy Background */}
-              {techIcons.map((tech, index) => {
-                // Adjust angles to avoid covering the face (center area)
-                // Position icons more around the edges, avoiding top center
-                let angle = (index * 360) / techIcons.length;
-                // Offset to avoid top center (where face is)
-                angle += 45; // Rotate all icons to avoid face area
+              {/* Animated Technology Icons with Glassy Background - Desktop Only */}
+              {!isMobile && (
+                <>
+                  {/* Animated Technology Icons with Glassy Background */}
+                  {techIcons.map((tech, index) => {
+                    // Adjust angles to avoid covering the face (center area)
+                    // Position icons more around the edges, avoiding top center
+                    let angle = (index * 360) / techIcons.length;
+                    // Offset to avoid top center (where face is)
+                    angle += 185; // Rotate all icons to avoid face area
 
-                // Increase radius for larger image
-                const radius = 240;
-                const x = Math.cos((angle * Math.PI) / 180) * radius;
-                const y = Math.sin((angle * Math.PI) / 180) * radius;
+                    // Radius for desktop - smaller circle
+                    const radius = 260;
+                    const x = Math.cos((angle * Math.PI) / 180) * radius;
+                    const y = Math.sin((angle * Math.PI) / 180) * radius;
 
-                // Adjust HTML and CSS icons to be further away from center
-                const isHTMLCSS = tech.name === "HTML" || tech.name === "CSS";
-                const adjustedRadius = isHTMLCSS ? radius + 40 : radius;
-                const adjustedX =
-                  Math.cos((angle * Math.PI) / 180) * adjustedRadius;
-                const adjustedY =
-                  Math.sin((angle * Math.PI) / 180) * adjustedRadius;
+                    // Adjust HTML and CSS icons to be further away from center
+                    const isHTMLCSS =
+                      tech.name === "HTML" || tech.name === "CSS";
+                    const adjustedRadius = isHTMLCSS ? radius + 30 : radius;
+                    const adjustedX =
+                      Math.cos((angle * Math.PI) / 180) * adjustedRadius;
+                    const adjustedY =
+                      Math.sin((angle * Math.PI) / 180) * adjustedRadius;
 
-                return (
-                  <motion.div
-                    key={tech.name}
-                    initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
-                    animate={{
-                      opacity: 1,
-                      scale: 1,
-                      x: isHTMLCSS ? adjustedX : x,
-                      y: isHTMLCSS ? adjustedY : y,
-                    }}
-                    transition={{
-                      delay: 1.5 + tech.delay,
-                      duration: 0.8,
-                      ease: [0.4, 0, 0.2, 1],
-                    }}
-                    whileHover={{ scale: 1.3, zIndex: 10 }}
-                    className="absolute top-1/3 right-20 lg:right-60 -translate-x-1 -translate-y-1/2"
-                  >
-                    <motion.div
-                      animate={{
-                        y: [0, -10, 0],
-                        rotate: [0, 5, 0],
-                      }}
-                      transition={{
-                        duration: 3 + index * 0.3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: tech.delay,
-                      }}
-                      className="relative w-14 h-14 lg:w-18 lg:h-18 rounded-xl backdrop-blur-md bg-white/25 dark:bg-gray-900/30 border border-white/70 dark:border-gray-600/70 shadow-lg flex items-center justify-center p-2 lg:p-2.5 group"
-                    >
-                      <Image
-                        src={tech.src}
-                        alt={tech.name}
-                        width={40}
-                        height={40}
-                        className="w-8 h-8 lg:w-12 lg:h-12 object-contain filter group-hover:brightness-110 transition-all duration-300"
-                      />
-                      {/* Glow effect on hover */}
+                    return (
                       <motion.div
-                        className="absolute inset-0 rounded-xl bg-gradient-to-r from-red-500/20 via-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        key={tech.name}
+                        initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
                         animate={{
-                          boxShadow: [
-                            "0 0 0px rgba(139, 92, 246, 0)",
-                            "0 0 20px rgba(139, 92, 246, 0.4)",
-                            "0 0 0px rgba(139, 92, 246, 0)",
-                          ],
+                          opacity: 1,
+                          scale: 1,
+                          x: isHTMLCSS ? adjustedX : x,
+                          y: isHTMLCSS ? adjustedY : y,
                         }}
                         transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeInOut",
+                          delay: 1.5 + tech.delay,
+                          duration: 0.8,
+                          ease: [0.4, 0, 0.2, 1],
                         }}
-                      />
-                    </motion.div>
-                  </motion.div>
-                );
-              })}
+                        whileHover={{ scale: 1.3, zIndex: 10 }}
+                        className="absolute top-[220px] right-[220px]"
+                      >
+                        <motion.div
+                          animate={{
+                            y: [0, -10, 0],
+                            rotate: [0, 5, 0],
+                          }}
+                          transition={{
+                            duration: 3 + index * 0.3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: tech.delay,
+                          }}
+                          className="relative w-14 h-14 lg:w-18 lg:h-18 rounded-xl backdrop-blur-md bg-white/25 dark:bg-gray-900/30 border border-white/70 dark:border-gray-600/70 shadow-lg flex items-center justify-center p-2 lg:p-2.5 group"
+                        >
+                          <Image
+                            src={tech.src}
+                            alt={tech.name}
+                            width={40}
+                            height={40}
+                            className="w-8 h-8 lg:w-12 lg:h-12 object-contain filter group-hover:brightness-110 transition-all duration-300"
+                          />
+                          {/* Glow effect on hover */}
+                          <motion.div
+                            className="absolute inset-0 rounded-xl bg-gradient-to-r from-red-500/20 via-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                            animate={{
+                              boxShadow: [
+                                "0 0 0px rgba(139, 92, 246, 0)",
+                                "0 0 20px rgba(139, 92, 246, 0.4)",
+                                "0 0 0px rgba(139, 92, 246, 0)",
+                              ],
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                            }}
+                          />
+                        </motion.div>
+                      </motion.div>
+                    );
+                  })}
+                </>
+              )}
 
               {/* Floating Elements */}
               <motion.div
@@ -430,6 +493,69 @@ export function Hero() {
               </motion.div>
             </div>
           </motion.div>
+
+          {/* Mobile Technology Icons - Below Image in 2 Rows */}
+          {isMobile && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.5, duration: 0.8 }}
+              className="mt-8 flex flex-col items-center gap-4"
+            >
+              {/* First Row - 4 Icons */}
+              <div className="flex items-center justify-center gap-3">
+                {techIcons.slice(0, 4).map((tech, index) => (
+                  <motion.div
+                    key={tech.name}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      delay: 1.6 + index * 0.1,
+                      duration: 0.5,
+                      ease: [0.4, 0, 0.2, 1],
+                    }}
+                    whileHover={{ scale: 1.15, y: -5 }}
+                    className="relative w-14 h-14 rounded-xl backdrop-blur-md bg-white/25 dark:bg-gray-900/30 border border-white/70 dark:border-gray-600/70 shadow-lg flex items-center justify-center p-2 group"
+                  >
+                    <Image
+                      src={tech.src}
+                      alt={tech.name}
+                      width={32}
+                      height={32}
+                      className="w-8 h-8 object-contain filter group-hover:brightness-110 transition-all duration-300"
+                    />
+                    <motion.div className="absolute inset-0 rounded-xl bg-gradient-to-r from-red-500/20 via-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </motion.div>
+                ))}
+              </div>
+              {/* Second Row - 4 Icons (Centered) */}
+              <div className="flex items-center justify-center gap-3">
+                {techIcons.slice(4, 8).map((tech, index) => (
+                  <motion.div
+                    key={tech.name}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      delay: 2.0 + index * 0.1,
+                      duration: 0.5,
+                      ease: [0.4, 0, 0.2, 1],
+                    }}
+                    whileHover={{ scale: 1.15, y: -5 }}
+                    className="relative w-14 h-14 rounded-xl backdrop-blur-md bg-white/25 dark:bg-gray-900/30 border border-white/70 dark:border-gray-600/70 shadow-lg flex items-center justify-center p-2 group"
+                  >
+                    <Image
+                      src={tech.src}
+                      alt={tech.name}
+                      width={32}
+                      height={32}
+                      className="w-8 h-8 object-contain filter group-hover:brightness-110 transition-all duration-300"
+                    />
+                    <motion.div className="absolute inset-0 rounded-xl bg-gradient-to-r from-red-500/20 via-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </motion.div>
 
         {/* Scroll Indicator */}
@@ -437,7 +563,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
-          className="absolute -bottom-10 left-1/2 transform -translate-x-1/2"
+          className="absolute -bottom-28 md:-bottom-10 left-1/2 transform -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}

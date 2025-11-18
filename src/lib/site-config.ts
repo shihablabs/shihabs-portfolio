@@ -2,12 +2,12 @@ export const siteConfig = {
   name: "ShihabLabs",
   description:
     "Creative Frontend Architect - Building exceptional digital experiences with modern technologies",
-  url: "https://maker-shihab.vercel.app",
-  ogImage: "https://maker-shihab.vercel.app/og.jpg",
+  url: "https://shihablabs.vercel.app",
+  ogImage: "https://shihablabs.vercel.app/og.jpg",
   links: {
     twitter: "https://twitter.com/makershihab",
-    github: "https://github.com/maker-shihab",
-    linkedin: "https://linkedin.com/in/maker-shihab",
+    github: "https://github.com/shihablabs",
+    linkedin: "https://linkedin.com/in/shihablabs",
   },
   mainNav: [
     {
