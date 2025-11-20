@@ -60,6 +60,208 @@ export interface Testimonial {
 
 export const projects: Project[] = [
   {
+    id: "ai-code-explainer",
+    title: "AI Code Explainer",
+    description:
+      "An AI-powered tool to translate complex code snippets into plain, easy-to-understand English.",
+    detailedDescription:
+      "This application uses **OpenAI's API** to quickly analyze any code snippet and explain it clearly in simple English, acting like a helpful tutor. It supports many programming languages and is a great resource for learning.",
+    category: "dynamic",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "OpenAI API",
+    ],
+    featured: true,
+    liveUrl: "https://aicodexp.vercel.app/",
+    githubUrl: "https://github.com/shihablabs/ai-code-explainer",
+    image: "/assets/images/portfolio/ai-explainer.png",
+    gallery: [
+      "/assets/images/portfolio/ai-explainer.png",
+      "/assets/images/portfolio/ai-explainer.png",
+      "/assets/images/portfolio/ai-explainer.png",
+    ],
+    status: "completed",
+    startDate: "2025-11-01",
+    endDate: "2025-11-10",
+    client: "Personal Project",
+    highlights: [
+      "Integrated **OpenAI's API** for natural language code explanation.",
+      "Provided clear, easy-to-read, and helpful summaries for complex code.",
+      "Fast and responsive user interface built with Next.js.",
+    ],
+    challenges: [
+      "Optimizing API calls for speed and cost efficiency.",
+      "Ensuring the AI handles many different programming languages correctly.",
+    ],
+    results: [
+      "Created a helpful, real-world AI learning tool.",
+      "Demonstrated strong skills in API integration and modern development.",
+    ],
+  },
+  {
+    id: "homeconnect",
+    title: "HomeConnect",
+    description:
+      "A performant and modern real estate web application for property listing and rent management (Academic Project).",
+    detailedDescription:
+      "HomeConnect provides a seamless experience for Property Owners to list and manage their rental properties, and for users to search for homes. Built following the academic **SDLC** (Software Development Life Cycle), the project features strong authentication, detailed property listings, and rent management tools. The frontend is optimized for speed using **Next.js** and styled with **Radix UI** components for modern aesthetics and accessibility. It integrates with a dedicated **Express.js/Mongoose** backend.",
+    category: "fullstack",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Express.js (Backend)",
+      "Mongoose / MongoDB",
+      "Radix UI",
+      "React Hook Form",
+      "Map Libraries (React Leaflet)",
+    ],
+    featured: true,
+    liveUrl: "https://homeconnecteub.vercel.app/",
+    githubUrl: "https://github.com/shihablabs/homeconnect-frontend",
+    image: "/assets/images/portfolio/homeconnect.png",
+    gallery: [
+      "/assets/images/portfolio/homeconnect.png",
+      "/assets/images/portfolio/homeconnect.png",
+    ],
+    status: "completed",
+    startDate: "2024-05-10", // A guess for a later date!
+    endDate: "2024-09-30", // A guess for the end date!
+    client: "University Project (EUB)", // Important to show the context!
+    highlights: [
+      "Implemented the complete **Academic SDLC** (SRS, SDD, Flowcharts).",
+      "Developed a full **MERN stack** solution for real-world problem-solving.",
+      "Designed a robust **REST API** with Express.js for property and user management.",
+      "Achieved high performance using **Next.js** features like SSR/SSG.",
+    ],
+    challenges: [
+      "Designing the complete **MongoDB Schema** and API endpoints from scratch.",
+      "Implementing complex state management for property filtering and search.",
+      "Ensuring secure authentication flows (using JWT).",
+    ],
+    results: [
+      "Successfully completed as a final year university project.",
+      "Created a clean, functional platform ready for future payment and email integration.",
+    ],
+  },
+  {
+    id: "verifycar",
+    title: "VerifyCar (Vehicle Check App)",
+    description:
+      "A clean, single-page application designed to verify vehicle registration and details using external APIs.",
+    detailedDescription:
+      "VerifyCar is a fast and responsive front-end application focused on user experience. It allows users to quickly input a vehicle number and retrieve key details by connecting to a dedicated external public API. This project demonstrates strong skills in **API data fetching**, **state management**, and creating a **clean, modern UI** with React.",
+    category: "react",
+    technologies: [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "Axios",
+      "React Hook Form",
+    ],
+    featured: true,
+    liveUrl: "https://verifycar.netlify.app/",
+    githubUrl: "https://github.com/shihablabs/verifycar",
+    image: "/assets/images/portfolio/verifycar.png",
+    gallery: [
+      "/assets/images/portfolio/verifycar.png",
+      "/assets/images/portfolio/verifycar.png",
+    ],
+    status: "completed",
+    startDate: "2024-04-05", // A guess for a date!
+    endDate: "2024-04-15", // A guess for the end date!
+    client: "Personal Project",
+    highlights: [
+      "Successfully fetched and displayed real-time data from an **external API**.",
+      "Created a **single-page application (SPA)** with dynamic content loading.",
+      "Focused on **usability** with clear form handling and error messages.",
+    ],
+    challenges: [
+      "Handling **API rate limits** and security keys.",
+      "Designing the UI to clearly present complex vehicle data.",
+      "Managing the application loading and error states during data fetching.",
+    ],
+    results: [
+      "Built a fast and efficient tool for checking vehicle details.",
+      "Demonstrated expertise in client-side data handling and display.",
+    ],
+  },
+  {
+    id: "Westminster Global",
+    title: "Westminster Global",
+    description:
+      "A static website for Westminster Global, a global education provider.",
+    detailedDescription:
+      "A static website for Westminster Global, a global education provider.",
+    category: "static",
+    technologies: ["HTML5", "CSS3", "JavaScript", "GSAP"],
+    featured: true,
+    liveUrl: "https://uk.westminster.global/",
+    image: "/assets/images/portfolio/westminster.png",
+    status: "completed",
+    startDate: "2024-02-10",
+    endDate: "2024-04-05",
+    client: "Westminster Global",
+    highlights: [
+      "Static website built with HTML, CSS, and JavaScript.",
+      "Smooth scroll animations and micro-interactions.",
+      "Optimized image loading and lazy loading.",
+      "Cross-platform compatibility.",
+      "SEO-optimized structure.",
+    ],
+    challenges: [
+      "Complex animation sequences.",
+      "Performance on low-end devices.",
+      "Client-specific design requirements.",
+    ],
+  },
+  {
+    id: "xcite-autos",
+    title: "Xcite (Automotive Classifieds & Media)",
+    description:
+      "Professional, high-traffic website for a leading Australian automotive media and classifieds company.",
+    detailedDescription:
+      "A custom-built, high-availability platform to support Xcite’s operations, focusing on the display of thousands of vehicle listings with integrated professional photography and video solutions. This project required a strong focus on **data presentation**, **SEO**, and **cross-browser performance** to handle a large and complex inventory system.",
+    category: "static",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Custom CSS",
+      "Performance Optimization",
+      "SEO Best Practices",
+    ],
+    featured: true,
+    liveUrl: "https://xcite.com.au/",
+    githubUrl: undefined,
+    image: "/assets/images/portfolio/xcite.png",
+    gallery: [
+      "/assets/images/portfolio/xcite.png",
+      "/assets/images/portfolio/xcite.png",
+    ],
+    status: "completed",
+    startDate: "2023-11-01",
+    endDate: "2024-01-10",
+    client: "Xcite Advertising (Australia)",
+    highlights: [
+      "Delivered a **production-ready**, high-availability website for a large client base.",
+      "Implemented sophisticated design for **high-resolution visual media** (photos/videos).",
+      "Optimized page load speeds and **SEO ranking** for thousands of vehicle listings.",
+      "Ensured the platform was fully **responsive** and accessible on all devices.",
+    ],
+    challenges: [
+      "Integrating the frontend with the client's existing **backend data API**.",
+      "Handling the sheer **volume of data** for the inventory and ensuring fast search results.",
+      "Meeting strict **client requirements** for branding and user workflow.",
+    ],
+    results: [
+      "Successfully launched the platform, supporting **millions of views** and daily user traffic.",
+      "Contributed to an increase in user engagement and dealer leads for the client.",
+    ],
+  },
+  {
     id: "smart-bazaar",
     title: "Smart Bazaar",
     description:
@@ -102,34 +304,6 @@ export const projects: Project[] = [
       "95%+ Lighthouse performance score",
       "2.5s average page load time",
       "Successfully deployed and tested across devices",
-    ],
-  },
-  {
-    id: "gittu-entertainment",
-    title: "Gittu - React Entertainment Platform",
-    description:
-      "React-based entertainment website focused on performance and responsiveness",
-    detailedDescription:
-      "A feature-rich entertainment platform built for a Fiverr client, focusing on smooth animations, responsive design, and engaging user interactions.",
-    category: "react",
-    technologies: ["React", "CSS3", "JavaScript", "Swiper.js", "GSAP"],
-    featured: true,
-    liveUrl: "https://uk.westminster.global/",
-    image: "/assets/images/portfolio/gittu.png",
-    status: "completed",
-    startDate: "2024-02-10",
-    endDate: "2024-04-05",
-    client: "Fiverr Client",
-    highlights: [
-      "Smooth scroll animations and micro-interactions",
-      "Optimized image loading and lazy loading",
-      "Cross-platform compatibility",
-      "SEO-optimized structure",
-    ],
-    challenges: [
-      "Complex animation sequences",
-      "Performance on low-end devices",
-      "Client-specific design requirements",
     ],
   },
   {

@@ -21,11 +21,10 @@ export function Projects() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Desktop: 5 projects (3 in first row, 2 in second row)
-  // Mobile: 4 projects (1 per row)
+  // Desktop: 6 projects (3 per row), Mobile: 4 projects (1 per row)
   const featuredProjects = projects
     .filter((p) => p.featured)
-    .slice(0, isMobile ? 4 : 5);
+    .slice(0, isMobile ? 4 : 6);
 
   return (
     <section
@@ -69,7 +68,7 @@ export function Projects() {
           </p>
         </motion.div>
 
-        {/* Projects Grid - Desktop: 5 cards (3+2), Mobile: 4 cards (1 per row) */}
+        {/* Projects Grid - Desktop: 6 cards (3 per row), Mobile: 4 cards (1 per row) */}
         <div
           className={`grid gap-6 ${
             isMobile
@@ -78,16 +77,7 @@ export function Projects() {
           }`}
         >
           {featuredProjects.map((project, index) => (
-            <div
-              key={project.id}
-              className={
-                !isMobile && index === 3
-                  ? "lg:col-start-1 lg:col-end-2"
-                  : !isMobile && index === 4
-                  ? "lg:col-start-2 lg:col-end-3"
-                  : ""
-              }
-            >
+            <div key={project.id}>
               <ProjectCard project={project} index={index} />
             </div>
           ))}
